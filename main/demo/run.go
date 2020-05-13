@@ -1,10 +1,8 @@
 package main
 
 import (
-	"StressTestTool/api"
-	"StressTestTool/base"
-	"StressTestTool/config"
-	"StressTestTool/stress"
+	"StressTestTool/http"
+	"StressTestTool/core"
 	"StressTestTool/utils"
 	"fmt"
 	"strconv"

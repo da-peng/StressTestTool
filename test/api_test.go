@@ -2,7 +2,7 @@ package test
 
 import (
 	"StressTestTool/api"
-	"StressTestTool/base"
+	"StressTestTool/http"
 	"StressTestTool/utils"
 	"testing"
 )
@@ -15,7 +15,7 @@ func LotteryGoAPISingleRequest(requestBody []byte) int64 {
 	apiInfo := api.LotteryGoApiInfo()
 
 	preRequest := apiInfo.BuildRequest(requestBody)
-	responseContent, responseTime := base.RealRequest(preRequest)
+	responseContent, responseTime := http.RealRequest(preRequest)
 
 	api.Statistics(responseContent)
 

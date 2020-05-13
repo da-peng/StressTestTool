@@ -1,7 +1,7 @@
-package api
+package main
 
 import (
-	"StressTestTool/base"
+	"StressTestTool/http"
 	"strings"
 )
 
@@ -13,8 +13,8 @@ type LppzXXLLotteryGoRequestBody struct {
 }
 
 // LppzXXLLotteryGoAPIInfo  apiinfo请求信息
-func LppzXXLLotteryGoAPIInfo() base.APIInfo {
-	return base.APIInfo{
+func LppzXXLLotteryGoAPIInfo() http.ApiInfo {
+	return http.ApiInfo{
 		Method:   "POST",
 		URL:      "https://lppzxxl-test.meizhidev.com/apis/" + "lppz/lotterys/go",
 		DataType: "Json", //Or Form

@@ -1,7 +1,12 @@
 package main
 
+import (
+	"StressTestTool/core"
+)
+
+
 //AsyncStressScene 利用协程异步的方式  实现压测试场景
-func AsyncStressScene() []AsyncStressConfig {
+func AsyncStressScene() []core.GoroutineStressTest {
 
 	conf := []AsyncStressConfig{
 		AsyncStressConfig{
@@ -14,7 +19,7 @@ func AsyncStressScene() []AsyncStressConfig {
 }
 
 //SyncStressScene 利用同步的方式  实现压测试场景
-func SyncStressScene() []SyncStressConfig {
+func LoopStressScene() []core.LoopStressTest {
 
 	conf := []SyncStressConfig{
 		SyncStressConfig{
