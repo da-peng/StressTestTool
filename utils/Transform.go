@@ -17,7 +17,7 @@ func StructToMap(obj interface{}) map[string]interface{} {
 	return data
 }
 
-func StructToJsonBytes(obj interface{}) []byte {
+func StructToJson(obj interface{}) []byte {
 
 	jsonBytes, err := json.Marshal(obj)
 	if err != nil {
@@ -28,7 +28,7 @@ func StructToJsonBytes(obj interface{}) []byte {
 	return jsonBytes
 }
 
-func MapToJsonBytes(mapInstances map[string]interface{}) []byte {
+func MapToJson(mapInstances map[string]interface{}) []byte {
 	jsonBytes, err := json.Marshal(mapInstances)
 	if err != nil {
 		Errors(err.Error())
@@ -49,7 +49,7 @@ func JsonToStruct(jsonStr string, obj interface{}) interface{} {
 
 func JsonToMap(jsonStr string) map[string]interface{} {
 	var mapResult map[string]interface{}
-	err := json.Unmarshal([]byte(jsonStr), mapResult)
+	err := json.Unmarshal([]byte(jsonStr), &mapResult)
 	if err != nil {
 		Errors(err.Error())
 		return nil

@@ -1,4 +1,4 @@
-package base
+package http
 
 import (
 	"StressTestTool/utils"
@@ -11,8 +11,16 @@ import (
 	"strings"
 )
 
+
+type ApiInfo struct {
+	Method   string
+	URL      string
+	DataType string
+	Headers  map[string]string
+}
+
 // BuildRequest give requestBody parmas
-func (its *APIInfo) BuildRequest(requestBody []byte) *http.Request {
+func (its *ApiInfo) BuildRequest(requestBody []byte) *http.Request {
 
 	headers := make(http.Header)
 	var preRequest *http.Request
@@ -22,7 +30,7 @@ func (its *APIInfo) BuildRequest(requestBody []byte) *http.Request {
 		headers.Set("Content-Type", "application/x-www-form-urlencoded")
 	}
 
-	fmt.Printf("请求Body:[%s]\n", requestBody)
+	// fmt.Printf("请求Body:[%s]\n", requestBody)
 	preRequest, err := http.NewRequest(its.Method, its.URL, bytes.NewBuffer(requestBody))
 
 	if err != nil {
@@ -43,7 +51,7 @@ func (its *APIInfo) BuildRequest(requestBody []byte) *http.Request {
 var errorCount int64
 
 // RealRequest return Reponse and TraceTime
-func RealRequest(preRequest *http.Request) (string, int64) {
+func doRequest(preRequest *http.Request) (string, int64) {
 	if preRequest == nil {
 		utils.Errors("error")
 	}
@@ -61,7 +69,7 @@ func RealRequest(preRequest *http.Request) (string, int64) {
 	} else {
 		statusCode := Response.StatusCode
 		if statusCode != 200 {
-			utils.Wrong("statusCode is not 200")
+			// utils.Wrong("statusCode is not 200")
 			errorCount++
 		}
 	}

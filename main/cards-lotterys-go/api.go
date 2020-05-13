@@ -1,7 +1,7 @@
-package api
+package main
 
 import (
-	"StressTestTool/base"
+	_ "StressTestTool/"
 	"strings"
 )
 
@@ -9,10 +9,10 @@ type LotteryGoRequestBody struct {
 	MixNick string `json:"mixNick"`
 }
 
-func LotteryGoApiInfo() base.APIInfo {
+func LotteryGoApiInfo() ApiInfo {
 	return base.APIInfo{
 		Method:   "POST",
-		URL:      "http://lppzcards-test-server.meizhidev.com/" + "lppz/lotterys/go",
+		URL:      "https://lppzcards-test-server.meizhidev.com/apis/" + "lppz/lotterys/go",
 		DataType: "Json", //Or Form
 		Headers: map[string]string{
 			"token": "d3eAHi0ut9E4fCsCzpSgGprwZycr4USb",

@@ -8,7 +8,7 @@ import (
 	"github.com/go-echarts/go-echarts/charts"
 )
 
-func StressResponseTimeScatter(responseTimeStatistics []int64) {
+func StatisticsOfRT(responseTimeStatistics []int64) {
 	scatter := charts.NewScatter()
 	scatter.SetGlobalOptions(
 		charts.TitleOpts{Title: "压测响应时间时序图"},

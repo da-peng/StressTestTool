@@ -1,16 +1,13 @@
-package stress
+package core
 
 import (
-	"StressTestTool/config"
 	"fmt"
 	"math"
 	"time"
 )
 
-/*
- * 同步压测
- */
-func SyncStress(confs []config.SyncStressConfig, requestMethod func(int, int)) {
+// LoopStress 正常轮训的 
+func LoopStress(confs []LoopStressTest, requestMethod func(int, int)) {
 	var throttle <-chan time.Time
 
 	for _, conf := range confs {
@@ -28,6 +25,7 @@ func SyncStress(confs []config.SyncStressConfig, requestMethod func(int, int)) {
 
 		fmt.Printf("1s内有[%d]个人操作\n", concurrency)
 		fmt.Printf("每个人间隔[%d]秒，连续操作[%d]次\n", conf.ThinkTime, iterNums)
+
 		for i := 0; i < iterNums; i++ {
 			for index := 0; index < concurrency; index++ {
 				//同步接口调用方法

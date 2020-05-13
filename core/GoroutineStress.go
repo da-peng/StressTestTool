@@ -1,14 +1,13 @@
-package stress
+package core
 
 import (
-	"StressTestTool/config"
 	"fmt"
 	"math"
 	"time"
 )
 
-// AsyncStress 异步压测
-func AsyncStress(confs []config.AsyncStressConfig, requestMethod func(int, int)) {
+// GoruntineStress go并发
+func GoruntineStress(confs []GoroutineStressTest, request func(int, int)) {
 
 	for _, conf := range confs {
 		// 迭代节流值， 迭代间隔时间
@@ -22,13 +21,14 @@ func AsyncStress(confs []config.AsyncStressConfig, requestMethod func(int, int))
 
 		fmt.Printf("1s内有[%d]个人操作\n", qps)
 		fmt.Printf("每个人间隔[%d]秒，连续操作[%d]次\n", thinkTime, groutineTimes)
+
 		// 开始迭代
 		for i := 0; i < groutineTimes; i++ {
 			fmt.Printf("测试开始时间[%s]\n", time.Now().Format("2006-01-02-15-04-05"))
 			//开始协程并发
 			for index := 0; index < qps; index++ {
 				// 异步接口调用方法
-				go requestMethod(index, i)
+				go request(index, i)
 			}
 			<-groutineThinkTimeThrottle
 		}

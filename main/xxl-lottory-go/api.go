@@ -5,16 +5,18 @@ import (
 	"strings"
 )
 
+// LppzXXLLotteryGoRequestBody 请求结构体
 type LppzXXLLotteryGoRequestBody struct {
 	MixNick   string `json:"mixNick"`
 	GameLevel int    `json:"gameLevel"`
 	GameScore int    `json:"gameScore"`
 }
 
-func LppzXXLLotteryGoApiInfo() base.APIInfo {
+// LppzXXLLotteryGoAPIInfo  apiinfo请求信息
+func LppzXXLLotteryGoAPIInfo() base.APIInfo {
 	return base.APIInfo{
 		Method:   "POST",
-		URL:      "http://lppzxxl-test-server.meizhidev.com/" + "lppz/lotterys/go",
+		URL:      "https://lppzxxl-test.meizhidev.com/apis/" + "lppz/lotterys/go",
 		DataType: "Json", //Or Form
 		Headers: map[string]string{
 			"token": "d3eAHi0ut9E4fCsCzpSgGprwZycr4USb",
@@ -23,6 +25,7 @@ func LppzXXLLotteryGoApiInfo() base.APIInfo {
 }
 
 var (
+	// Lppz_xxl7 1
 	Lppz_xxl7 = 0
 	Lppz_xxl6 = 0
 	Lppz_xxl5 = 0

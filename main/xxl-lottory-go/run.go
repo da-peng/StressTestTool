@@ -18,7 +18,7 @@ import (
 //LppzXXLLotteryGoAPISingleRequest  单个接口请求方法  拿到API 的url header method 数据类型 等信息
 func LppzXXLLotteryGoAPISingleRequest(requestBody []byte) int64 {
 
-	apiInfo := api.LppzXXLLotteryGoApiInfo()
+	apiInfo := api.LppzXXLLotteryGoAPIInfo()
 
 	preRequest := apiInfo.BuildRequest(requestBody)
 	responseContent, responseTime := base.RealRequest(preRequest)
@@ -38,7 +38,7 @@ func lppzXXLcreateMultiRequestBody(start int, count int, iterNums int) []api.Lpp
 			api.LppzXXLLotteryGoRequestBody{
 				MixNick:   strconv.Itoa(flag),
 				GameLevel: iterNums + 1,
-				GameScore: (iterNums + 1) * 7000,
+				GameScore: (iterNums + 1) * 1000,
 			})
 		flag++
 	}

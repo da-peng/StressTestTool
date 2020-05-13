@@ -1,4 +1,4 @@
-package config
+package main
 
 //AsyncStressScene 利用协程异步的方式  实现压测试场景
 func AsyncStressScene() []AsyncStressConfig {
@@ -9,11 +9,6 @@ func AsyncStressScene() []AsyncStressConfig {
 			QPS:          100,
 			ThinkTime:    6,
 		},
-		// AsyncStressConfig{
-		// 	DurationTime: 10,
-		// 	QPS:          10,
-		// 	ThinkTime:    10,
-		// },
 	}
 	return conf
 }
