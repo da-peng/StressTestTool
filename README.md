@@ -39,7 +39,7 @@ func GoroutineStressTest() []core.GoroutineStressTest {
 参数:
 1. nums 当前压测梯度 
 2. iter 当前迭代数 
-3. 3.count = QPS = TPS 单次迭代总数据
+3. count = QPS = TPS 单次迭代总数据
 
 ```
 // generateTestData 生产 每次迭代对应的测试数据

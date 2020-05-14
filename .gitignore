@@ -1,1 +1,3 @@
 *.sum
+.vscode
+.DS_Store
