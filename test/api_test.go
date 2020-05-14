@@ -1,34 +1,32 @@
 package test
 
 import (
+	"StressTestTool/http"s
 	"StressTestTool/lppz"
-	"StressTestTool/http"
-
+	"StressTestTool/utils"
 	"testing"
 )
 
 // test 后缀的文件，内的函数不能被外部引用
 
 //APISingleRequest  单个接口请求方法  拿到API 的url header method 数据类型 等信息
-func LotteryGoAPISingleRequest(requestBody []byte) int64 {
+func DoRequest(params []byte) (string, int64) {
 
-	apiInfo := api.LotteryGoApiInfo()
+	request := lppz.XXLLLotteryGo.BuildRequest(params)
+	responseContent, responseTime := http.DoRequest(request)
 
-	preRequest := apiInfo.BuildRequest(requestBody)
-	responseContent, responseTime := http.DoRequest(preRequest)
-
-	api.Statistics(responseContent)
-
-	return responseTime
+	return responseContent, responseTime
 }
 
 // TestLotteryGoAPI 单个接口测试
 func TestLotteryGoAPI(t *testing.T) {
-	lotteryGoRequestBody := api.LotteryGoRequestBody{
-		MixNick: "aa",
+	lotteryGoRequestBody := lppz.RequestParmas{
+		MixNick:   "aa",
+		GameLevel: 1,
+		GameScore: 2,
 	}
-	requestBody := utils.StructToJsonBytes(lotteryGoRequestBody)
+	requestBody := utils.StructToJSON(lotteryGoRequestBody)
 
-	LotteryGoAPISingleRequest(requestBody)
+	DoRequest(requestBody)
 
 }

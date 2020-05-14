@@ -1,10 +1,8 @@
 package lppz
 
-import (
-	"StressTestTool/core"
-)
+import "StressTestTool/core"
 
-//GoruntineStress Goruntine并发 设置不同梯度的数据
+//GoroutineStressTest Goruntine并发 设置不同梯度的数据
 func GoroutineStressTest() []core.GoroutineStressTest {
 
 	stepOne := core.GoroutineStressTest{
@@ -18,26 +16,27 @@ func GoroutineStressTest() []core.GoroutineStressTest {
 		QPS:          100,
 		ThinkTime:    6,
 	}
-	
-	stressTestPlan := [stepOne,stepTwo]
+
+	stressTestPlan := []core.GoroutineStressTest{stepOne, stepTwo}
 	return stressTestPlan
 }
 
 //LoopStressTest 利用同步的方式  实现压测试场景
 func LoopStressTest() []core.LoopStressTest {
 	//
-	stepOne := core.LoopStressTest {
+	stepOne := core.LoopStressTest{
 		DurationTime: 10,
 		ThinkTime:    10,
-		LoopNums:  10,
+		LoopNums:     10,
 	}
 
-	stepTwo := core.LoopStressTest {
+	stepTwo := core.LoopStressTest{
 		DurationTime: 10,
 		ThinkTime:    10,
-		LoopNums:  10,
+		LoopNums:     10,
 	}
 
-	stressTestPlan := [stepOne,stepTwo]
+	stressTestPlan := []core.LoopStressTest{stepOne, stepTwo}
+
 	return stressTestPlan
 }
