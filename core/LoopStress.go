@@ -6,31 +6,27 @@ import (
 	"time"
 )
 
-// LoopStress 正常轮训的 
-func LoopStress(confs []LoopStressTest, requestMethod func(int, int)) {
-	var throttle <-chan time.Time
+// LoopStress for轮训核心代码
+func LoopStress(testPlan []LoopStressTest, transaction func(int, int)) {
 
-	for _, conf := range confs {
-		// 1000ms内每个请求间隔
-		requestDuration := 1000 / conf.QPS
-		// 节流值,1000ms 内请求间隔时间
-		throttle = time.Tick(time.Duration(requestDuration) * time.Millisecond)
-
+	for nums, grads := range testPlan {
+		//思考时间
+		thinkTime := grads.ThinkTime
 		// （前1s）与（后1s）的间隔时间思考时间
-		thinkTimeThrottle := time.Tick(time.Duration(conf.ThinkTime) * time.Second)
+		thinkTimeThrottle := time.Tick(time.Duration(grads.ThinkTime) * time.Second)
 		// 迭代次数
-		iterNums := int(math.Ceil(float64(conf.DurationTime*60) / float64(conf.ThinkTime)))
+		iterationTimes := int(math.Ceil(float64(grads.DurationTime*60) / float64(grads.ThinkTime)))
 		// 并发数
-		concurrency := conf.Concurrency
+		loopNums := grads.LoopNums
 
-		fmt.Printf("1s内有[%d]个人操作\n", concurrency)
-		fmt.Printf("每个人间隔[%d]秒，连续操作[%d]次\n", conf.ThinkTime, iterNums)
+		fmt.Printf("压测第{%d}梯度，开始时间{%s}\n", nums, time.Now().Format("2006-01-02-15-04-05"))
+		fmt.Printf("1s内有[%d]个人操作\n", loopNums)
+		fmt.Printf("每个人操作间隔[%d]秒，连续操作[%d]次\n", thinkTime, iterationTimes)
 
-		for i := 0; i < iterNums; i++ {
-			for index := 0; index < concurrency; index++ {
+		for iteration := 0; iteration < iterationTimes; iteration++ {
+			for userFlag := 0; userFlag < loopNums; userFlag++ {
 				//同步接口调用方法
-				requestMethod(index, i)
-				<-throttle
+				transaction(userFlag, iteration)
 			}
 			<-thinkTimeThrottle
 		}

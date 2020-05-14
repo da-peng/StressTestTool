@@ -6,23 +6,23 @@ import (
 	"time"
 )
 
-//Errors msg stdout
+//Errors 信息输出
 func Errors(msg string) {
 	printOut("Error", msg)
 	debug.PrintStack()
 }
 
-//Wrong msg stdout
+//Wrong 信息输出
 func Wrong(msg string) {
 	printOut("Wrong", msg)
 }
 
-//Info msg stdout
+//Info 信息输出
 func Info(msg string) {
 	printOut("Info", msg)
 }
 
-//Debug msg stdout
+//Debug 信息输出
 func Debug(msg string) {
 	printOut("Debug", msg)
 }
