@@ -22,7 +22,7 @@ func LoopStress(testPlan []LoopStressTest, generateTestData func(nums int, iter 
 		// 并发数
 		loopNums := grads.LoopNums
 
-		fmt.Printf("压测第{%d}梯度，开始时间{%s}\n", nums, time.Now().Format("2006-01-02-15-04-05"))
+		fmt.Printf("压测第[%d]梯度，开始时间[%s]\n", nums, time.Now().Format("2006-01-02-15-04-05"))
 		fmt.Printf("1s内有[%d]个人操作\n", loopNums)
 		fmt.Printf("每个人操作间隔[%d]秒，连续操作[%d]次\n", thinkTime, iterTimes)
 

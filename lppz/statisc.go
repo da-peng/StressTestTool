@@ -1,7 +1,6 @@
 package lppz
-import {
-	"strings"
-}
+
+import "strings"
 
 var conditons = []string{
 	"店铺优惠券 139-5",
@@ -15,7 +14,7 @@ var conditons = []string{
 
 // 全局变量 统计奖品 数量
 var prizes = make(map[string]int)
-var rsequestCounts int = 0
+var requestCounts int = 0
 var responseTimes []int64
 
 func isExist(content string, condition string) bool {
@@ -23,9 +22,9 @@ func isExist(content string, condition string) bool {
 }
 
 // Statistics 统计
-func Statistics(content string,responseTime int64) {
+func statistics(content string, responseTime int64) {
 	// 1.统计 响应时间
-	responseTimes = append(ResponseTimes, responseTime)
+	responseTimes = append(responseTimes, responseTime)
 	// 2.统计 请求总数
 	requestCounts++
 

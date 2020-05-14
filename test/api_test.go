@@ -1,7 +1,7 @@
 package test
 
 import (
-	"StressTestTool/http"s
+	"StressTestTool/http"
 	"StressTestTool/lppz"
 	"StressTestTool/utils"
 	"testing"

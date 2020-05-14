@@ -66,8 +66,19 @@ func generateTestData(nums int, iter int, count int) []XXLLotteryGoRequestParmas
 ###  transaction 定义压测的事务
 
 ```
+func Tranaction(userTestData map[string]interface{}) {
+	// 发送请求
+	//1. 测试数据
+	params := utils.MapToJSON(userTestData)
+	//2. 发送请求，触发事务，这里可自定义
+	responseContent, responseTime := DoRequest(params)
 
+	//3. 统计
+	statistics(responseContent, responseTime)
+
+}
 ```
+
 
 
 

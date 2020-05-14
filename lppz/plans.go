@@ -1,6 +1,8 @@
 package lppz
 
-import "StressTestTool/core"
+import (
+	"StressTestTool/core"
+)
 
 //GoroutineStressTest Goruntine并发 设置不同梯度的数据
 func GoroutineStressTest() []core.GoroutineStressTest {

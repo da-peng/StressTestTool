@@ -28,7 +28,7 @@ func GoruntineStress(testPlan []GoroutineStressTest, generateTestData func(nums 
 		QPS := grads.QPS
 
 		// 压力测试各梯度 描述
-		fmt.Printf("压测第{%d}梯度，开始时间{%s}\n", nums, time.Now().Format("2006-01-02-15-04-05"))
+		fmt.Printf("压测第[%d]梯度，开始时间[%s]\n", nums, time.Now().Format("2006-01-02-15-04-05"))
 		fmt.Printf("1s内有[%d]个人操作\n", QPS)
 
 		fmt.Printf("每个人操作间隔[%d]秒，连续操作[%d]次\n", thinkTime, iterTimes)
@@ -57,7 +57,7 @@ func GoruntineStress(testPlan []GoroutineStressTest, generateTestData func(nums 
 		// 每个梯度时长预留10s
 		if len(testPlan) > nums {
 			time.Sleep(10 * time.Second)
-			fmt.Printf("去往压测第{%d}梯度\n", nums+1)
+			fmt.Printf("去往压测第[%d]梯度\n", nums+1)
 		}
 	}
 }
