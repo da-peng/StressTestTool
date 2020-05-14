@@ -16,7 +16,7 @@ func TestXXLStressTest(t *testing.T) {
 		//1.testPlan
 		testPlan := GoroutineStressTest()
 		//2.运行压测
-		core.GoruntineStress(testPlan, generateTestData, Tranaction)
+		core.GoroutineStress(testPlan, generateTestData, Tranaction)
 
 		//3.RT数据绘图
 		utils.StatisticsOfRT(responseTimes)

@@ -1,10 +1,15 @@
 
 
-# GoruntineStressTest Goruntine并发核心 说明
+# GoroutineStressTest Goroutine并发核心 说明
 
 ```
-func GoruntineStress(testPlan []GoroutineStressTest, generateTestData func(nums int, iter int, count int) []map[string]interface{}, transaction func(userTestData map[string]interface{})) 
+func GoroutineStress(testPlan []GoroutineStressTest, generateTestData func(nums int, iter int, count int) []map[string]interface{}, transaction func(userTestData map[string]interface{})) 
 ```
+## 理由
+资料[Go并发编程之并发和Goroutine](https://www.jianshu.com/p/80f69dad849f)
+1. 比线程更小，十几个goroutine可能体现在底层就是五六个线程，Go语言内部帮你实现了这些goroutine之间的内存共享。执行goroutine只需极少的栈内存(大概是4~5KB)，当然会根据相应的数据伸缩。也正因为如此，可同时运行成千上万个并发任务
+
+
 ## 配置步骤
 
 ### testPlan  []GoroutineStressTest 定义压测计划
